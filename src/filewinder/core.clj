@@ -4,3 +4,4 @@
 (defn file-name-match? [file1 file2]
   (= (.getName file1) (.getName file2)))
 (filter (partial file-name-match? source-file) (file-seq target-dir))
+(for [target-file (file-seq target-dir)] (.getName target-file))
