@@ -5,6 +5,8 @@
 (def file1 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/tmp.json"))
 (def file2 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/tmp.json"))
 (def file3 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/one/test.txt"))
+(def source-dir (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source"))
+(def target-dir (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target"))
 
 (deftest should-return-true-for-two-files-with-same-names
   (is (file-name-match? file1 file2)))
