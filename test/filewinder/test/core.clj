@@ -29,3 +29,11 @@
   (is (= 6 (count (match-files source-dir target-dir))))
   (is (= 3 (count (remove empty? (match-files source-dir target-dir))))))
 
+(deftest should-return-map-with-source-dir-as-key-matches-as-values
+  (is (= 6 (count (find-matches source-dir target-dir))))
+  (is (empty? (get (find-matches source-dir target-dir) (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source"))))
+  (is (empty? (get (find-matches source-dir target-dir) (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/project"))))
+  (is (empty? (get (find-matches source-dir target-dir) (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/project/build.xml"))))
+  (is (= 1 (count (get (find-matches source-dir target-dir) (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/test.txt")))))
+  (is (= 2 (count (get (find-matches source-dir target-dir) (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/tmp.json")))))
+  (is (= 1 (count (get (find-matches source-dir target-dir) (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/tmp.xml"))))))
