@@ -15,8 +15,8 @@
 (deftest should-return-false-for-two-files-with-different-names
   (is (not (file-name-match? sfile1 tfile2))))
 
-(deftest sfile1-should-match-once-in-target-dir
-  (is (= 1 (count (match-file sfile1 target-dir)))))
+(deftest sfile1-should-match-twice-in-target-dir
+  (is (= 2 (count (match-file sfile1 target-dir)))))
 
 (deftest sfile2-should-not-match-any-file-in-target-dir
   (is (empty? (match-file sfile2 target-dir))))
