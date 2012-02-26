@@ -6,12 +6,12 @@
 (defn match-file [file dir]
   (filter (partial file-name-match? file) (file-seq dir)))
 
-(defn matching-files [dir1 dir2]
+(defn match-files [dir1 dir2]
   (for [file (file-seq dir1)]
-    (filter (partial file-name-match? file) (file-seq dir2))))
+    (match-file file dir2)))
 
 (defn find-matches [source-dir target-dir]
-  (zipmap (file-seq source-dir) (matching-files source-dir target-dir)))
+  (zipmap (file-seq source-dir) (match-files source-dir target-dir)))
 
 (defn print-matches [matches]
   (for [[k vs] matches]
