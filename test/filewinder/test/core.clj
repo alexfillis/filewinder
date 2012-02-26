@@ -20,3 +20,8 @@
 
 (deftest sfile2-should-not-match-any-file-in-target-dir
   (is (empty? (match-file sfile2 target-dir))))
+
+(deftest source-dir-should-match-three-files-in-target-dir
+  (is (= 6 (count (match-files source-dir target-dir))))
+  (is (= 3 (count (remove empty? (match-files source-dir target-dir))))))
+
