@@ -2,21 +2,21 @@
   (:use [filewinder.core])
   (:use [clojure.test]))
 
-(def file1 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/tmp.json"))
+(def sfile1 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/tmp.json"))
 (def sfile2 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/project/build.xml"))
-(def file2 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/tmp.json"))
-(def file3 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/one/test.txt"))
+(def tfile1 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/tmp.json"))
+(def tfile2 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/one/test.txt"))
 (def source-dir (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source"))
 (def target-dir (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target"))
 
 (deftest should-return-true-for-two-files-with-same-names
-  (is (file-name-match? file1 file2)))
+  (is (file-name-match? sfile1 tfile1)))
 
 (deftest should-return-false-for-two-files-with-different-names
-  (is (not (file-name-match? file1 file3))))
+  (is (not (file-name-match? sfile1 tfile2))))
 
-(deftest file1-should-match-once-in-target-dir
-  (is (= 1 (count (match-file file1 target-dir)))))
+(deftest sfile1-should-match-once-in-target-dir
+  (is (= 1 (count (match-file sfile1 target-dir)))))
 
 (deftest sfile2-should-not-match-any-file-in-target-dir
   (is (empty? (match-file sfile2 target-dir))))
