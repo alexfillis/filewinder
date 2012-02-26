@@ -4,6 +4,7 @@
 
 (def sfile1 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/tmp.json"))
 (def sfile2 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/project/build.xml"))
+(def sfile3 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/test.txt"))
 (def tfile1 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/tmp.json"))
 (def tfile2 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/one/test.txt"))
 (def source-dir (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source"))
@@ -14,6 +15,9 @@
 
 (deftest should-return-false-for-two-files-with-different-names
   (is (not (file-name-match? sfile1 tfile2))))
+
+(deftest sfile3-should-match-once-in-target-dir
+  (is (= 1 (count (match-file sfile3 target-dir)))))
 
 (deftest sfile1-should-match-twice-in-target-dir
   (is (= 2 (count (match-file sfile1 target-dir)))))
