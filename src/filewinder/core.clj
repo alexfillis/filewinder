@@ -1,4 +1,6 @@
-(ns filewinder.core)
+(ns filewinder.core
+  (:use [clojure.pprint :only (pprint)])
+  (:gen-class))
 
 (defn file-name-match? [file1 file2]
   (= (.getName file1) (.getName file2)))
@@ -16,3 +18,7 @@
 (defn print-matches [matches]
   (for [[k vs] matches]
     (doall (println k) (for [v vs] (println (str "- " v))))))
+
+(defn -main[source-dir target-dir]
+  (println (pprint (find-matches (java.io.File. source-dir) (java.io.File. target-dir)))))
+
