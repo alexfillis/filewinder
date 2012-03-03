@@ -10,8 +10,17 @@
 (def sfile6 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/project"))
 (def tfile1 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/tmp.json"))
 (def tfile2 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/one/test.txt"))
+(def tfile3 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/one/tmp.json"))
+(def tfile4 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/one/tmp.xml"))
 (def source-dir (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source"))
 (def target-dir (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target"))
+
+(def matches {sfile1 (seq '(tfile1 tfile3)),
+                 sfile2 '(),
+                 sfile3 (seq '(tfile2)),
+                 sfile4 (seq '(tfile4)),
+                 sfile5 '(),
+                 sfile6 '()})
 
 (deftest should-return-true-for-two-files-with-same-names
   (is (file-name-match? sfile1 tfile1)))
@@ -42,3 +51,10 @@
     (is (= 1 (count (get matches sfile3))))
     (is (= 2 (count (get matches sfile1))))
     (is (= 1 (count (get matches sfile4))))))
+
+(deftest should-remove-entries-with-no-matches
+  (let [filtered-matches (filter-no-match matches)]
+    (is (= 3 (count filtered-matches)))
+    (is (= 1 (count (get filtered-matches sfile3))))
+    (is (= 2 (count (get filtered-matches sfile1))))
+    (is (= 1 (count (get filtered-matches sfile4))))))
