@@ -1,19 +1,20 @@
 (ns filewinder.test.core
   (:use [filewinder.core])
-  (:use [clojure.test]))
+  (:use [clojure.test])
+  (:use [clojure.java.io :only (file)]))
 
-(def sfile1 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/tmp.json"))
-(def sfile2 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/project/build.xml"))
-(def sfile3 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/test.txt"))
-(def sfile4 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/tmp.xml"))
-(def sfile5 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source"))
-(def sfile6 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source/project"))
-(def tfile1 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/tmp.json"))
-(def tfile2 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/one/test.txt"))
-(def tfile3 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/one/tmp.json"))
-(def tfile4 (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target/one/tmp.xml"))
-(def source-dir (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/source"))
-(def target-dir (java.io.File. "/home/alex/dev/play/clojure/filewinder/test-data/target"))
+(def sfile1 (file "/home/alex/dev/play/clojure/filewinder/test-data/source/tmp.json"))
+(def sfile2 (file "/home/alex/dev/play/clojure/filewinder/test-data/source/project/build.xml"))
+(def sfile3 (file "/home/alex/dev/play/clojure/filewinder/test-data/source/test.txt"))
+(def sfile4 (file "/home/alex/dev/play/clojure/filewinder/test-data/source/tmp.xml"))
+(def sfile5 (file "/home/alex/dev/play/clojure/filewinder/test-data/source"))
+(def sfile6 (file "/home/alex/dev/play/clojure/filewinder/test-data/source/project"))
+(def tfile1 (file "/home/alex/dev/play/clojure/filewinder/test-data/target/tmp.json"))
+(def tfile2 (file "/home/alex/dev/play/clojure/filewinder/test-data/target/one/test.txt"))
+(def tfile3 (file "/home/alex/dev/play/clojure/filewinder/test-data/target/one/tmp.json"))
+(def tfile4 (file "/home/alex/dev/play/clojure/filewinder/test-data/target/one/tmp.xml"))
+(def source-dir (file "/home/alex/dev/play/clojure/filewinder/test-data/source"))
+(def target-dir (file "/home/alex/dev/play/clojure/filewinder/test-data/target"))
 
 (def matches {sfile1 (seq '(tfile1 tfile3)),
                  sfile2 '(),

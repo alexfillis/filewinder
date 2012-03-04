@@ -1,4 +1,5 @@
 (ns filewinder.core
+  (:use [clojure.java.io :only (file)])
   (:gen-class))
 
 (defn file-name-match? [file1 file2]
@@ -25,5 +26,5 @@
   (flush))
 
 (defn -main[source-dir target-dir]
-  (print-matches (find-matches (java.io.File. source-dir) (java.io.File. target-dir))))
+  (print-matches (find-matches (file source-dir) (file target-dir))))
 
