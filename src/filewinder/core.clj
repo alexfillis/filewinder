@@ -3,6 +3,12 @@
   (:use [clojure.contrib.profile :only (profile prof)])
   (:gen-class))
 
+(defn is-dir? [file]
+  (.isDirectory file))
+
+(defn files-in [dir]
+  (remove is-dir? (file-seq dir)))
+
 (defn file-name-match? [file1 file2]
   (prof :file-name-match (= (.getName file1) (.getName file2))))
 
@@ -27,5 +33,5 @@
   (flush))
 
 (defn -main[source-dir target-dir]
-  (profile (print-matches (find-matches (file source-dir) (file target-dir)))))
+  (profile (print-matches (find-matches (files-in (file source-dir)) (files-in (file target-dir))))))
 

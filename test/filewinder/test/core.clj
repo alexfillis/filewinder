@@ -23,6 +23,13 @@
                  sfile5 '(),
                  sfile6 '()})
 
+(deftest is-dir-tests
+  (is (is-dir? sfile6))
+  (is (not (is-dir? sfile1))))
+
+(deftest files-in-tests
+  (is (= 4 (count (files-in source-dir)))))
+
 (deftest should-return-true-for-two-files-with-same-names
   (is (file-name-match? sfile1 tfile1)))
 
