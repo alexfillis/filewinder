@@ -1,13 +1,19 @@
 # filewinder
 
-FIXME: write description
+File system utility that will, given two directory paths as input, report any files in second path that have names matching those is the first.
+
+This simple program was created to synchronise duplicated directory structures that have been modified by different systems in different ways over time.
+
+The report output can be used to identify potentially duplicated files. This allows users to take some action. Like deleting the file in one of the directory paths if the file is a duplicate.
 
 ## Usage
 
-FIXME: write
+lein uberjar
+cd test-external
+./test1.sh
 
 ## License
 
-Copyright (C) 2012 FIXME
+Copyright (C) 2012 Alex Fillis
 
 Distributed under the Eclipse Public License, the same as Clojure.
