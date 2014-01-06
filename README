@@ -1,3 +1,5 @@
+[![Build Status](https://drone.io/github.com/alexfillis/filewinder/status.png)](https://drone.io/github.com/alexfillis/filewinder/latest)
+
 # filewinder
 
 File system utility that will, given two directory paths as input, report any files in second path that have names matching those is the first.
