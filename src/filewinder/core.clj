@@ -1,6 +1,5 @@
 (ns filewinder.core
   (:use [clojure.java.io :only (file)])
-  (:use [clojure.contrib.profile :only (profile prof)])
   (:gen-class))
 
 (defn is-dir? [file]
